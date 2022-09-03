@@ -1,6 +1,6 @@
 # Introduction
 
-A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
+This is a Calorie Counter App built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
 
 ---
 
@@ -10,13 +10,13 @@ A Simple ToDo App is built using the MVC Architecture, we have also implemented 
 
 # Objectives
 
-- It's a beginner level app created to understand how MVC concept and logins are added
+- It's a Calorie Counter app to built showing the MVC concept with logins
 
 ---
 
 # Who is this for? 
 
-- It's for beginners & intermediates with little more experience, to help understand the various aspects of building a node app with some complex features
+- It's for anyone interested in a Calorie Counter app who wants to understand the various aspects of building a node app with some complex features
 
 ---
 
