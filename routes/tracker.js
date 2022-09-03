@@ -1,16 +1,20 @@
 const express = require('express')
 const router = express.Router()
-const todosController = require('../controllers/todos') 
+const trackerController = require('../controllers/tracker') 
 const { ensureAuth } = require('../middleware/auth')
 
-router.get('/', ensureAuth, todosController.getTodos)
+router.get('/', ensureAuth, trackerController.getTarget)
 
-router.post('/createTodo', todosController.createTodo)
+router.post('/createTarget', trackerController.createTarget)
 
-router.put('/markComplete', todosController.markComplete)
+router.put('/updateTarget', trackerController.updateTarget)
+
+/*
 
 router.put('/markIncomplete', todosController.markIncomplete)
 
 router.delete('/deleteTodo', todosController.deleteTodo)
+
+*/
 
 module.exports = router

@@ -8,7 +8,7 @@ const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const todoRoutes = require('./routes/todos')
+const todoRoutes = require('./routes/tracker')
 
 // configures env file location
 require('dotenv').config({path: './config/.env'})
