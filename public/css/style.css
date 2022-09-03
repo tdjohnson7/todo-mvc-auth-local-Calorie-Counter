@@ -1,5 +1,10 @@
 h1{
     color: red;
+    text-align: center;
+}
+a{
+    text-align: center;
+    display: block;
 }
 .completed{
     text-decoration: line-through;
@@ -7,4 +12,47 @@ h1{
 }
 .not{
     text-decoration: underline;
+}
+
+/* images */
+.indeximage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/* fieldset and legend */
+fieldset{
+    margin: 2em 0;
+    padding: 1em 2em;
+    border: solid 1px #ccc;
+    border-radius: 6px;
+    min-width: 200px;
+}
+
+legend {
+    font-size: 1.25em;
+    padding: 0 .25em;
+    color: #999;
+}
+
+/* labels */
+label{
+    display: block;
+    margin-top: 1em;
+}
+
+label:first-of-type {
+    margin-top:0;
+}
+
+/* submit button */
+input[type="submit"] {
+    padding: .5em 1em;
+    border-radius: 6px;
+    background-color: #333;
+    color: #fff;
+    font-size: .8em;
+
 }
