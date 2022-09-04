@@ -14,14 +14,14 @@ Array.from(todoComplete).forEach((el)=>{
     el.addEventListener('click', markIncomplete)
 })
 
-async function deleteTodo(){
-    const todoId = this.parentNode.dataset.id
+async function updateTarget(){
+    const targetId = this.parentNode.dataset.id
     try{
-        const response = await fetch('todos/deleteTodo', {
-            method: 'delete',
+        const response = await fetch('tracker/updateTarget', {
+            method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'targetIdFromJSFile': targetId
             })
         })
         const data = await response.json()
@@ -32,38 +32,43 @@ async function deleteTodo(){
     }
 }
 
-async function markComplete(){
-    const todoId = this.parentNode.dataset.id
+async function getCalories(){
+    const foodSearch = document.querySelector('#inputFood').value
+    //get request to search nutritionix for the item's name in the API
     try{
-        const response = await fetch('todos/markComplete', {
-            method: 'put',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+        const res = await fetch(`https://trackapi.nutritionix.com/v2/search/instant?query=${foodSearch}`,{
+           
+            headers: {
+                'x-app-id' : '97f66bd0',
+                'x-app-key' : '404548aade2822f45583e849df78c7d7'
+            },
+        })
+        const data = await res.json()
+        //console.log(data)
+        
+        document.querySelector('#outputFood').innerText = data.common[0].food_name
+        //post request to get Calories,etc
+        const res2 = await fetch(`https://trackapi.nutritionix.com/v2/natural/nutrients`,{
+            method:'post',
+                    
+            headers:{
+                'Content-Type': 'application/json',
+                'x-app-id' : '97f66bd0',
+                'x-app-key' : '404548aade2822f45583e849df78c7d7',
+                //'x-remote-user-id' : 0, //not needed
+            },
+            body: JSON.stringify( {
+                'query': data.common[0].food_name //pull first food name from object
             })
         })
-        const data = await response.json()
-        console.log(data)
-        location.reload()
-    }catch(err){
-        console.log(err)
-    }
-}
+        const data2 = await res2.json()
+        //console.log(data2)
+        document.querySelector('#outputCalorie').innerText = data2.foods[0].nf_calories
+        //access the photo
+        //document.querySelector('#').innerText = data2.foods[0].photo
 
-async function markIncomplete(){
-    const todoId = this.parentNode.dataset.id
-    try{
-        const response = await fetch('todos/markIncomplete', {
-            method: 'put',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'todoIdFromJSFile': todoId
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()
     }catch(err){
         console.log(err)
     }
+
 }

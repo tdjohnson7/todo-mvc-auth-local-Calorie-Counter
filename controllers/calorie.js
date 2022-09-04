@@ -1,4 +1,5 @@
-const Todo = require('../models/Todo')
+//new tdjohnson7
+const Calorie = require('../models/calorie')
 
 module.exports = {
     getTodos: async (req,res)=>{
@@ -51,5 +52,7 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
-    }
+    },
+    
+    
 }    
