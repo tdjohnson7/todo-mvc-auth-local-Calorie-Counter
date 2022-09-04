@@ -12,8 +12,8 @@ const mainRoutes = require('./routes/main')
 const calorieRoutes = require('./routes/calorie')
 const trackerRoutes = require('./routes/tracker')
 
+// wtf?
 const test = 'hi'
-
 
 // configures env file location
 require('dotenv').config({path: './config/.env'})
