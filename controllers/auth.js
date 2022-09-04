@@ -13,7 +13,7 @@ const User = require('../models/User')
   
   exports.postLogin = (req, res, next) => {
     const validationErrors = []
-    if (req.body.username.length < 4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
+    if (req.body.userName.length < 4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
   
     if (validationErrors.length) {
@@ -72,19 +72,19 @@ const User = require('../models/User')
     let user;
     if(req.body.targetCalories){
       user = new User({
-        userName: req.body.username,
+        userName: req.body.userName,
         targetCalories:Number(req.body.targetCalories),
         password: req.body.password
       })
     }else{
       user = new User({
-        userName: req.body.username,
+        userName: req.body.userName,
         password: req.body.password
       })
     }
   
     User.findOne({
-      userName: req.body.username
+      userName: req.body.userName
     }, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
