@@ -6,8 +6,13 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const flash = require('express-flash')
 const logger = require('morgan')
+
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
+const todoRoutes = require('./routes/todos')
+const calorieRoutes = require('./routes/calorie')
+
+const test = 'hi'
 const trackerRoutes = require('./routes/tracker')
 
 // configures env file location
@@ -40,10 +45,11 @@ app.use(passport.session())
 app.use(flash())
   
 app.use('/', mainRoutes)
-app.use('/tracker', trackerRoutes)
- 
-app.listen(process.env.PORT, ()=>{
-    console.log('Server is running, you better catch it!')
-})    
+app.use('/todos', todoRoutes)
+app.use('/calorie', calorieRoutes)//new tdjohnson7
 
-//
+app.use('/tracker', trackerRoutes)
+
+app.listen(process.env.PORT, ()=>{
+    console.log(`Server is running on ${process.env.PORT} , you better catch it!`)
+})    
