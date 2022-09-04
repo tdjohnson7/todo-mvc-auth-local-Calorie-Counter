@@ -13,7 +13,7 @@ const User = require('../models/User')
   
   exports.postLogin = (req, res, next) => {
     const validationErrors = []
-    if (req.body.userName.length < 4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
+    if (req.body.userName.length<4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
   
     if (validationErrors.length) {
