@@ -58,8 +58,8 @@ const User = require('../models/User')
   
   exports.postSignup = (req, res, next) => {
     const validationErrors = []
-    req.body.username.trim()
-    if (req.body.username.length<4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
+    req.body.userName.trim()
+    if (req.body.userName.length<4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
     if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
     // if (req.body.targetCalories ==null ) validationErrors.push({ msg: 'Please enter a target calorie count.' })
