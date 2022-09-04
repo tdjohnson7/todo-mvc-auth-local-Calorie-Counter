@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calorie Counter Log In</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <% if (locals.messages.errors) { %>
@@ -17,10 +18,22 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/login" method="POST">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
-    </form>
+
+    <section>
+        <form action="/login" method="POST">
+            <fieldset>
+                <legend>Log in</legend>
+                <label>Username</label>
+                <input type="text" name="userName" placeholder="username">
+
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Password">
+                
+                <label></label> <!-- temporary solution for proper submit button allignment-->
+                <input type="submit">
+            </fieldset>
+        </form>
+    </section>
+
 </body>
 </html>
