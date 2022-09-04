@@ -4,7 +4,7 @@ const User = require('../models/User')
 
  exports.getLogin = (req, res) => {
     if (req.user) {
-      return res.redirect('/todos')
+      return res.redirect('/tracker')
     }
     res.render('login', {
       title: 'Login'
@@ -13,7 +13,7 @@ const User = require('../models/User')
   
   exports.postLogin = (req, res, next) => {
     const validationErrors = []
-    if (req.body.username.length < 4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
+    if (req.body.userName.length<4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
   
     if (validationErrors.length) {
@@ -31,7 +31,7 @@ const User = require('../models/User')
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/todos')
+        res.redirect(req.session.returnTo || '/tracker')
       })
     })(req, res, next)
   }
@@ -49,7 +49,7 @@ const User = require('../models/User')
   
   exports.getSignup = (req, res) => {
     if (req.user) {
-      return res.redirect('/todos')
+      return res.redirect('/tracker')
     }
     res.render('signup', {
       title: 'Create Account'
@@ -58,8 +58,8 @@ const User = require('../models/User')
   
   exports.postSignup = (req, res, next) => {
     const validationErrors = []
-    req.body.username.trim()
-    if (req.body.username.length<4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
+    req.body.userName.trim()
+    if (req.body.userName.length<4) validationErrors.push({ msg: 'Please enter a username longer than 4 characters.' })
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
     if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
     // if (req.body.targetCalories ==null ) validationErrors.push({ msg: 'Please enter a target calorie count.' })
@@ -72,19 +72,19 @@ const User = require('../models/User')
     let user;
     if(req.body.targetCalories){
       user = new User({
-        userName: req.body.username,
+        userName: req.body.userName,
         targetCalories:Number(req.body.targetCalories),
         password: req.body.password
       })
     }else{
       user = new User({
-        userName: req.body.username,
+        userName: req.body.userName,
         password: req.body.password
       })
     }
   
     User.findOne({
-      userName: req.body.username
+      userName: req.body.userName
     }, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
@@ -97,7 +97,7 @@ const User = require('../models/User')
           if (err) {
             return next(err)
           }
-          res.redirect('/todos')
+          res.redirect('/tracker')
         })
       })
     })
