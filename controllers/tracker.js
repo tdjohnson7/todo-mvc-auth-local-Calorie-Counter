@@ -1,10 +1,11 @@
+const User = require('../models/User')
 const Target = require('../models/Target')
 
 module.exports = {
     getTarget: async (req,res)=>{
         console.log(req.user)
         try{
-            const targetCalories = await Target.find({userId:req.user.id})
+            const targetCalories = await User.find({userId:req.user.id})
             res.render('tracker.ejs', {target: targetCalories, user: req.user})
         }catch(err){
             console.log(err)
@@ -12,13 +13,13 @@ module.exports = {
     },
 
     updateTarget: async (req, res)=>{
-        console.log(req.user)
         try{
-            await Target.findOneAndUpdate({_id:req.body.TargetIdFromJSFile},{    
-                target: req.body.newTargetCal                         
-            })
+            await User.findByIdAndUpdate(
+                {_id:req.user.id},
+                {targetCalories: req.body.newTargetCal}
+                )
             console.log('Updated calorie target')
-            res.json('Updated calorie target')
+            res.redirect('/tracker')
         }catch(err){
             console.log(err)
         }
