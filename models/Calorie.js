@@ -1,14 +1,27 @@
 //new tdjohnson7
+// modified by Cy
 const mongoose = require('mongoose')
 
 const CalorieSchema = new mongoose.Schema({
-  todo: {
-    type: String,
+  foodItems: {
+    type: Array,
     required: true,
+    default:[]
   },
-  completed: {
+  date:{
+    type:Date,
+    required:true,
+    default:Date.now()
+  },
+  sum:{
+    type:Number,
+    default:0,
+    required:true
+  },
+  goalMet: {
     type: Boolean,
     required: true,
+    default:false
   },
   userId: {
     type: String,

@@ -1,4 +1,5 @@
 const Target = require('../models/Target')
+// const Calorie = require('../models/Calorie')
 
 module.exports = {
     getTarget: async (req,res)=>{
@@ -22,5 +23,10 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
+    },
+    // method needs finished: by Cy, this will add the food item and calorie count recieved in the request to the database.
+    addFoodItem: async (req, res)=>{
+        console.log(req.body)
+        res.sendStatus(200)
     }
 }
