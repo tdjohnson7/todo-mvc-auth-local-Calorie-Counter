@@ -1,18 +1,8 @@
-const deleteBtn = document.querySelectorAll('.del')
-const todoItem = document.querySelectorAll('span.not')
-const todoComplete = document.querySelectorAll('span.completed')
+const searchFoodBtn = document.querySelector('#searchFoodBtn')
+const addFoodItemBtn = document.querySelector('#addFoodItem')
 
-Array.from(deleteBtn).forEach((el)=>{
-    el.addEventListener('click', deleteTodo)
-})
-
-Array.from(todoItem).forEach((el)=>{
-    el.addEventListener('click', markComplete)
-})
-
-Array.from(todoComplete).forEach((el)=>{
-    el.addEventListener('click', markIncomplete)
-})
+searchFoodBtn.addEventListener('click',getCalories)
+addFoodItemBtn.addEventListener('click',addFoodItem)
 
 async function updateTarget(){
     const targetId = this.parentNode.dataset.id
@@ -31,7 +21,7 @@ async function updateTarget(){
         console.log(err)
     }
 }
-
+// We may want to seperate the get food list functionality and the get calorie functionality: Cy
 async function getCalories(){
     const foodSearch = document.querySelector('#inputFood').value
     //get request to search nutritionix for the item's name in the API
@@ -71,4 +61,22 @@ async function getCalories(){
         console.log(err)
     }
 
+}
+// by Cy: this is a quick and dirty method currently, needs cleaned up and made functional with a better UI: Cy
+async function addFoodItem(){
+    let calories = document.querySelector('#outputCalorie').innerText
+    const foodItem = document.querySelector('#outputFood').innerText
+
+    let data = await fetch('/tracker/addFoodItem',{
+        method:'post',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+            calories:calories,
+            foodItem:foodItem,
+        })
+    })
+    console.log(data)
+    
 }

@@ -13,11 +13,22 @@
     The current target is: <%= user.targetCalories %>
    </h3>
 
-
     <form action="/tracker/updateTarget" method='PUT'>
+
         <input type="text" placeholder="Enter new calorie target" name='newTargetCal'>
         <input type="submit">
     </form>
+    <!-- below code needs made pretty :) by Cy -->
+<!-- by Cy: the below is just for testing with the main.js client side fetch code and the backend addFoodItem route -->
+    <input id="inputFood" type="text">
+    <button id="searchFoodBtn">Search</button>
+
+    <h2>Result:</h2>
+    <h3 id="outputFood"></h3>
+    <h3 id="outputCalorie"></h3>
+    <button class="bg-black" id="addFoodItem">Add Calories to Tracker</button>
+
+
 
     <a href="/logout">Logout</a>
 
