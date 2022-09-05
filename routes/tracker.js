@@ -5,7 +5,7 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, trackerController.getTarget)
 
-router.put('/updateTarget', trackerController.updateTarget)
+router.post('/update', trackerController.updateTarget)
 
 
 module.exports = router
