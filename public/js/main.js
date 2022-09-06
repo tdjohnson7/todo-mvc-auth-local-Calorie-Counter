@@ -55,7 +55,7 @@ async function getCalories(){
         //console.log(data2)
         document.querySelector('#outputCalorie').innerText = data2.foods[0].nf_calories
         //access the photo
-        //document.querySelector('#').innerText = data2.foods[0].photo
+        document.querySelector('#foodThumb').setAttribute('src',data2.foods[0].photo.thumb)
 
     }catch(err){
         console.log(err)
