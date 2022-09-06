@@ -78,5 +78,5 @@ async function addFoodItem(){
         })
     })
     console.log(data)
-    
+    location.reload()
 }
