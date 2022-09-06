@@ -31,7 +31,14 @@
     <h3 id="outputCalorie"></h3>
     <button class="" id="addFoodItem">Add Calories to Tracker</button>
 
-
+    <ul>
+        <% if(dailyCalorie.foodItems){ for(let i = 0; i < dailyCalorie.foodItems.length ; i++){ %>
+            <li>
+                <h4><%= String(dailyCalorie.foodItems[i].food) %></h4>
+                <span><%= dailyCalorie.foodItems[i].calories %></span>
+            </li>
+        <% } } %>
+    </ul>
 
     <a href="/logout">Logout</a>
 

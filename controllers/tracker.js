@@ -53,20 +53,15 @@ module.exports = {
     // method needs finished: by Cy, this will add the food item and calorie count recieved in the request to the database.
     addFoodItem: async (req, res)=>{
         console.log(req.body)
-
-        let dailyCalorie = await Calorie.find({userId:req.user._id})
-        if(dailyCalorie.length){
-            let date = Date.now()
-            let today = date.getDate()
-            let month = date.getMonth()
-            let year = date.getFullYear()
-            dailyCalorie.filter((dailyEntry)=>{
-                dailyEntry.date.getDate() === today &&
-                dailyEntry.date.getMonth() === month &&
-                dailyEntry.date.getFullYear() === year
-            })
-        }
+        let cals = parseInt(req.body.calories)
+        let foodItem = req.body.foodItem
+        let dailyCalorie = await Calorie.findOneAndUpdate({
+            userId:req.user._id,
+            'date.day':new Date().getDate(),
+            'date.month':new Date().getMonth(),
+            'date.year':new Date().getFullYear()
+        },{ $inc:{ sum : cals }, $push: { foodItems :{ calories : cals,food: foodItem }}})
         console.log(dailyCalorie)
-        res.sendStatus(200)
+        res.redirect(301,('/tracker'))
     }
 }
