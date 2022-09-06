@@ -9,9 +9,13 @@ const CalorieSchema = new mongoose.Schema({
     default:[]
   },
   date:{
-    type:Date,
+    type:Object,
     required:true,
-    default:Date.now()
+    default:{
+      day:new Date().getDate(),
+      month:new Date().getMonth(),
+      year:new Date().getFullYear(),
+    }
   },
   sum:{
     type:Number,

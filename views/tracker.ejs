@@ -9,9 +9,12 @@
 </head>
 <body>
     <h1>Target</h1>
-   <h3>
-    The current target is: <%= user.targetCalories %>
-   </h3>
+    <h3>
+        Current Calories: <%= dailyCalorie.sum %>
+    </h3>
+    <h3>
+        The current target is: <%= user.targetCalories %>
+    </h3>
 
     <form action="/tracker/updateTarget" method='PUT'>
 
@@ -26,7 +29,7 @@
     <h2>Result:</h2>
     <h3 id="outputFood"></h3>
     <h3 id="outputCalorie"></h3>
-    <button class="bg-black" id="addFoodItem">Add Calories to Tracker</button>
+    <button class="" id="addFoodItem">Add Calories to Tracker</button>
 
 
 
