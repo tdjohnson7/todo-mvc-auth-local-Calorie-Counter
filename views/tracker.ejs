@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calorie Tracker</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,13 +23,23 @@
     </form>
     <!-- below code needs made pretty :) by Cy -->
 <!-- by Cy: the below is just for testing with the main.js client side fetch code and the backend addFoodItem route -->
-    <input id="inputFood" type="text">
-    <button id="searchFoodBtn">Search</button>
+    <!-- <input id="inputFood" type="text">
+    <button id="searchFoodBtn">Search</button> -->
+
+    <!-- new search form and button with original code above for reference in the event there is an error -->
+    <div class="w-2/5">
+        <div class="relative text-gray-700">
+            <input id="inputFood" class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" placeholder="Enter desired food"/>
+            <button id="searchFoodBtn" class="absolute inset-y-0 right-0 flex items-center px-4 font-bold text-white bg-emerald-600 rounded-r-lg hover:bg-emerald-500 focus:bg-emerald-700">Search</button>
+        </div>
+    </div>
 
     <h2>Result:</h2>
     <h3 id="outputFood"></h3>
     <h3 id="outputCalorie"></h3>
-    <button class="" id="addFoodItem">Add Calories to Tracker</button>
+    <!-- <button class="" id="addFoodItem">Add Calories to Tracker</button> -->
+    <!-- adjusting button, keeping original code above in the event something breaks -->
+    <button id="addFoodItem" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-full">Add Calories to Tracker</button>
 
     <ul>
         <% if(dailyCalorie.foodItems){ for(let i = 0; i < dailyCalorie.foodItems.length ; i++){ %>
