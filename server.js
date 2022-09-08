@@ -47,7 +47,8 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/calorie', calorieRoutes)//new tdjohnson7
 app.use('/tracker', trackerRoutes)
-
-app.listen(process.env.PORT, ()=>{
-    console.log(`Server is running on ${process.env.PORT} , you better catch it!`)
-})    
+app.set('port',(process.env.PORT))
+app.set('host',`0.0.0.0`)
+app.listen(process.env.PORT), ()=>{
+    console.log(`Server is running on 0.0.0.0:${process.env.PORT}, you better catch it!`)
+}

@@ -1,5 +1,5 @@
 //new tdjohnson7
-const Calorie = require('../models/calorie')
+const Calorie = require('../models/Calorie')
 
 module.exports = {
     getTodos: async (req,res)=>{
