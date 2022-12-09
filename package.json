@@ -1,7 +1,7 @@
 {
   "name": "todo-mvc-auth-local",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a Calorie Counter App built using the MVC Architecture, we have also implemented \"authorization\" so folx can sign up, customize & personalize the app",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -31,5 +31,13 @@
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdjohnson7/todo-mvc-auth-local-Calorie-Counter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tdjohnson7/todo-mvc-auth-local-Calorie-Counter/issues"
+  },
+  "homepage": "https://github.com/tdjohnson7/todo-mvc-auth-local-Calorie-Counter#readme"
 }
